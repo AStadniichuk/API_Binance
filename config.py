@@ -1,0 +1,1 @@
+BINANCE_URL = "https://api.binance.com/api/v3/avgPrice"
