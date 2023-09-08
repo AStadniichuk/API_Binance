@@ -8,7 +8,7 @@ class AbstractThread(threading.Thread, ABC):
     currency_pair: str
     interval: int
 
-    def __init__(self, currency_pair, interval):
+    def __init__(self, currency_pair: str, interval: int):
         super().__init__()
         self.currency_pair = currency_pair
         self.interval = interval
