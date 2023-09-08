@@ -1,6 +1,7 @@
 from string import ascii_uppercase
 
 def verify_currency_pair(currency_pair: str):
+    """Verify the format of a currency pair."""
     if not isinstance(currency_pair, str):
         raise TypeError("Currency pair must be a string")
 
@@ -15,6 +16,8 @@ def verify_currency_pair(currency_pair: str):
 
 
 def verify_interval(interval: int):
+    """Verify the format of an interval."""
+
     if not isinstance(interval, int):
         raise TypeError("Interval must be a int")
 

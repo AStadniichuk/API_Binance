@@ -18,10 +18,22 @@ class Meta(type):
 
 
 class DbManager(metaclass=Meta):
+    """
+        Class for managing database connections using the Tortoise ORM.
+
+        This class ensures that there is only one instance of the database manager in the entire application.
+
+        Attributes:
+            initialized (bool): A flag indicating whether the database has been initialized.
+
+        Methods:
+            initialize_db(): Initializes the database connection if it has not yet been initialized.
+            close_connection(): Closes the database connection if it has been initialized.
+    """
     def __init__(self):
         self.initialized = False
 
-    async def initialize_db(self):
+    async def initialize_db(self) -> None:
         if not self.initialized:
             await Tortoise.init(
                 db_url=DATABASE_URL,
@@ -30,7 +42,7 @@ class DbManager(metaclass=Meta):
             await Tortoise.generate_schemas()
             self.initialized = True
 
-    async def close_connection(self):
+    async def close_connection(self) -> None:
         if self.initialized:
             await Tortoise.close_connections()
 
