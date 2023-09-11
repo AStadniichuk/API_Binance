@@ -1,9 +1,9 @@
-from threads.redis_thread import RedisClientThread
-from threads.sql_thread import SQLClientThread
+from api_clients.redis_client import RedisClient
+from api_clients.sql_client import SQLClient
 
 if __name__ == '__main__':
-    sql_client = SQLClientThread(currency_pair='BTCUSDT', interval=5)
-    redis_client = RedisClientThread(currency_pair='LTCUSDT', interval=8)
+    sql_client = SQLClient(currency_pair='BTCUSDT', interval=5, max_iterations=3)
+    redis_client = RedisClient(currency_pair='LTCUSDT', interval=8, max_iterations=2)
 
     sql_client.start()
     redis_client.start()
