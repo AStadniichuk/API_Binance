@@ -1,5 +1,11 @@
 from string import ascii_uppercase
 
+
+def verify_all(currency_pair: str, interval: int):
+    verify_currency_pair(currency_pair)
+    verify_interval(interval)
+
+
 def verify_currency_pair(currency_pair: str):
     """Verify the format of a currency pair."""
     if not isinstance(currency_pair, str):

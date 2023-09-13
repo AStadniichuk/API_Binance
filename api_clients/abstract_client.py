@@ -9,7 +9,7 @@ from datetime import datetime
 from yarl import URL
 from abc import ABC, abstractmethod
 
-from validators.validators import verify_interval, verify_currency_pair
+from validators.validators import verify_all
 from config import BINANCE_URL
 
 logging.basicConfig(level=logging.INFO)
@@ -30,8 +30,7 @@ class AbstractAPIClient(Thread, ABC):
     max_iterations: int | None
 
     def __init__(self, currency_pair: str, interval: int, max_iterations: int | None = None):
-        verify_currency_pair(currency_pair)
-        verify_interval(interval)
+        verify_all(currency_pair, interval)
 
         super().__init__()
         self.currency_pair = currency_pair.upper()
