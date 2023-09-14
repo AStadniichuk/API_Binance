@@ -58,6 +58,7 @@ class SQLClient(AbstractAPIClient):
 
         graph = GraphBuilder(self.currency_pair, exchange_rates)
         graph.show_graph()
+        graph.save_graph(self.currency_pair)
 
     def run(self) -> None:
         asyncio.run(self.start_sql_client())

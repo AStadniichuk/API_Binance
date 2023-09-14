@@ -1,3 +1,5 @@
+import os.path
+
 import matplotlib.pyplot as plt
 
 
@@ -25,3 +27,11 @@ class GraphBuilder:
     def show_graph(self) -> None:
         self._plot_graph()
         plt.show()
+
+    def save_graph(self, file_name: str) -> None:
+        self._plot_graph()
+        directory = 'currency_graphs/'
+        os.makedirs(directory, exist_ok=True)
+        file_path = os.path.join(directory, file_name)
+        plt.savefig(file_path)
+        plt.close()
